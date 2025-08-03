@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head>
+    <title>Book Recommendation - Entry</title>
+</head>
+<body>
+<h1>Welcome to Book Recommendation System</h1>
+
+<!-- Admin Login Button -->
+<form action="/admin/login" method="get">
+    <button type="submit">Login as Admin</button>
+</form>
+
+<br/>
+
+<!-- User Enter Button with CSRF token -->
+<form action="/user/enter" method="post" th:action="@{/user/enter}">
+    <button type="submit">Enter as User</button>
+</form>
+
+
+</body>
+</html>

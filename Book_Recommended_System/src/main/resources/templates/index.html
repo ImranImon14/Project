@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Book Recommended System</title>
+</head>
+<body>
+<h1>All Books</h1>
+
+<!-- Show Add New Book only if role is admin -->
+<p th:if="${role == 'admin'}">
+    <a href="/books/add">Add New Book</a>
+</p>
+
+<form action="/genre" method="get" style="margin-bottom: 10px;">
+    <label>Select Genre:</label>
+    <input type="text" name="genre" placeholder="e.g. Romance" />
+    <button type="submit">Filter</button>
+</form>
+
+<form action="/search" method="get" style="margin-bottom: 20px;">
+    <label>Search:</label>
+    <input type="text" name="keyword" placeholder="Book or Author" />
+    <button type="submit">Search</button>
+</form>
+
+<hr/>
+
+<ul>
+    <li th:each="book : ${books}" style="margin-bottom: 20px;">
+        <strong th:text="${book.title}"></strong> by
+        <em th:text="${book.author}"></em> | Genre:
+        <span th:text="${book.genre}"></span>
+        <br/>
+        <img th:src="${book.imageUrl}" alt="Book cover" width="100"/>
+        <br/>
+
+        <!-- Show Delete link only if role is admin -->
+        <a th:if="${role == 'admin'}"
+           th:href="@{'/books/delete/' + ${book.id}}"
+           onclick="return confirm('Are you sure you want to delete this book?');">
+            Delete
+        </a>
+    </li>
+</ul>
+</body>
+</html>
