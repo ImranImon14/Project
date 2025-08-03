@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class HomeController {
 
     // Entry page - lets user pick admin login or user enter
-    @GetMapping("/")
+    @GetMapping("/")    //'/' means local host 8080
     public String entryPage() {
         return "entry";  // entry.html with buttons for Admin Login & User Enter
     }
@@ -25,7 +25,8 @@ public class HomeController {
     // Optional: logout handler to clear session and return to entry page
     @GetMapping("/logout")
     public String logout(HttpSession session) {
-        session.invalidate();
+        session.invalidate();  //remove data from session
         return "redirect:/";  // Back to entry page
     }
 }
+
