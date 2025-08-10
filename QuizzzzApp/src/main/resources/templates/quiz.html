@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>বাংলা কুইজ</title>
+</head>
+<body>
+<h2>বাংলা কুইজ - উচ্চ বিদ্যালয় স্তর</h2>
+
+<p th:if="${error}" th:text="${error}" style="color:red;"></p>
+
+<form action="/submit" method="post">
+
+    <div th:each="question, iterStat : ${questions}">
+        <p><strong>প্রশ্ন [[${iterStat.index + 1}]]:</strong> <span th:text="${question.questionText}"></span></p>
+
+        <label>
+            <input type="radio" th:name="'answers[' + ${iterStat.index} + ']'" th:value="${question.option1}" required />
+            <span th:text="${question.option1}"></span>
+        </label><br>
+
+        <label>
+            <input type="radio" th:name="'answers[' + ${iterStat.index} + ']'" th:value="${question.option2}" />
+            <span th:text="${question.option2}"></span>
+        </label><br>
+
+        <label>
+            <input type="radio" th:name="'answers[' + ${iterStat.index} + ']'" th:value="${question.option3}" />
+            <span th:text="${question.option3}"></span>
+        </label><br>
+
+        <label>
+            <input type="radio" th:name="'answers[' + ${iterStat.index} + ']'" th:value="${question.option4}" />
+            <span th:text="${question.option4}"></span>
+        </label><br><br>
+    </div>
+
+    <button type="submit">জমা দিন</button>
+</form>
+</body>
+</html>
