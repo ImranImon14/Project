@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>My Cart</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+  <h2>Your Cart</h2>
+  <div th:if="${cartItems.size() == 0}">
+    <p>No items in cart. <a th:href="@{/}">Continue shopping</a></p>
+  </div>
+  <table class="table table-bordered" th:if="${cartItems.size() > 0}">
+    <thead>
+    <tr>
+      <th>Book Name</th>
+      <th>Author</th>
+      <th>Price</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item : ${cartItems}">
+      <td th:text="${item.book.name}"></td>
+      <td th:text="${item.book.author}"></td>
+      <td th:text="${item.book.price} + ' BDT'"></td>
+      <td>
+        <a th:href="@{'/cart/remove/' + ${item.book.id}}" class="btn btn-danger btn-sm">Remove</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <a th:href="@{/}" class="btn btn-secondary">Continue Shopping</a>
+  <a th:href="@{/checkout}" class="btn btn-success" th:if="${cartItems.size() > 0}">Proceed to Checkout</a>
+</div>
+</body>
+</html>
