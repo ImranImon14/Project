@@ -1,0 +1,32 @@
+body {
+    text-align: center;
+    margin-top: 20px;
+}
+.box {
+    width: 400px;
+    margin: auto;
+    padding: 20px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    background-color: #f9f9f9;
+}
+.count-btn {
+    font-size: 20px;
+    color: white;
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: green;
+    
+}
+.reset-btn{
+    font-size: 20px;
+    color: white;
+    padding: 10px 20px;
+    margin: 10px;
+    background-color: red;
+}
+h1{
+    font-size: 50px;
+    
+}
